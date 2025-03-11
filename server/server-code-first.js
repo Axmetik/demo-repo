@@ -7,6 +7,9 @@ const Query = queryType({
         t.string('greeting', {
             resolve: () => 'Hello World!',
         });
+        t.string('other', {
+            resolve: () => 'Hi there!',
+        })
     }
 })
 
