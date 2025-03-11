@@ -1,4 +1,4 @@
-# Demo Git Repository
+# Demo Git Repository(GrapgQL practice)
 
 This is the first file in this repo
 
