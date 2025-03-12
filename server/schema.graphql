@@ -5,7 +5,15 @@ type Query {
 
 type Job {
     id: ID,
+    """ This is documentation comment for __title__ field """
     title: String!, #! required field
     description: String,
-    companyId: ID,
+    date: String!,
+    company: Company
+}
+
+type Company {
+    id: ID,
+    name: String!,
+    description: String,
 }
