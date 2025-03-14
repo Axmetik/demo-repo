@@ -6,9 +6,11 @@ import { getJob } from '../lib/graphql/queries';
 
 function JobPage() {
   const { jobId } = useParams();
+
   const [job, setJob] = useState();
+  
   useEffect(() => {
-    getJob(jobId).then(setJob);
+    getJob(jobId).then(job => setJob(job));
   }, [jobId]);
 
   console.log('[JobPage] job:', job);
