@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-// import { formatDate } from '../lib/formatters';
+import { formatDate } from '../lib/formatters';
 
 function JobList({ jobs }) {
   return (
@@ -18,7 +18,7 @@ function JobItem({ job }) {
   return (
     <li className="media">
       <div className="media-left has-text-grey">
-        {job.date}
+        {formatDate(job.date)}
       </div>
       <div className="media-content">
         <Link to={`/jobs/${job.id}`}>
