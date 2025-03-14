@@ -1,6 +1,7 @@
 type Query {
     greeting: String,
-    jobs: [Job!]
+    jobs: [Job!],
+    job(id: ID!): Job
 }
 
 type Job {
@@ -8,7 +9,7 @@ type Job {
     """ This is documentation comment for __title__ field """
     title: String!, #! required field
     description: String,
-    date: String!,
+    date: String,
     company: Company
 }
 
