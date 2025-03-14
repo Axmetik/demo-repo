@@ -8,7 +8,7 @@ export const resolvers = {
     },
 
     Job: {
-        date: (job) => formatDate(job.createdAt),
+        // date: (job) => formatDate(job.createdAt),
         company: (job) => getCompany(job.companyId)
     }
 }
