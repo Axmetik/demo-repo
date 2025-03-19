@@ -5,6 +5,11 @@ type Query {
     company(id: ID!): Company
 }
 
+type Mutation {
+    createJob(input: CreateJobInput!): Job,
+    deleteJob(id: ID!): Job
+}
+
 type Job {
     id: ID,
     """ This is documentation comment for __title__ field """
@@ -21,6 +26,7 @@ type Company {
     jobs: [Job!]
 }
 
-type Mutation {
-    createJob(title: String, description: String): Job
+input CreateJobInput {
+    title: String, 
+    description: String
 }
