@@ -61,3 +61,4 @@ export async function getCompany(id) {
     const { company } = await client.request(query, { id });
     return company;
 }
+
