@@ -1,6 +1,7 @@
 import { Link, useParams } from 'react-router';
 import { useEffect, useState } from 'react';
 import { getCompany } from '../lib/graphql/queries';
+import JobList from '../components/JobList';
 
 function CompanyPage() {
   const { companyId } = useParams();
@@ -23,14 +24,8 @@ function CompanyPage() {
       <div className="box">
         {company.description}
       </div>
-      <div className='box'>
-        <h2 className="subtitle">All Vacancies</h2>
-        <div style={{display:'flex', flexDirection:'column'}}>
-          {company.jobs.map(job => <Link to={`/jobs/${job.id}`} key={job.id}>
-            {job.title}
-          </Link>)}
-        </div>
-      </div>
+      <h2 className='subtitle'>All Jobs</h2>
+      <JobList jobs={company.jobs} />
     </div>
   );
 }
