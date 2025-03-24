@@ -21,18 +21,17 @@ export const resolvers = {
         company: async (_root, { id }) => {
             const company = await getCompany(id);
 
-            if(!company) {
-                throw notFoundError('No company found with id '+ id)
-            }
+            if(!company) throw notFoundError('No company found with id '+ id)
                 
             return company;
         }
     },
 
     Mutation: {
-        createJob: (_root, { input: {title, description} }) => {
-            const companyId = 'FjcJCHJALA4i'; // TODO Based on user
-            return createJob({companyId, title, description});
+        createJob: (_root, { input: {title, description} }, { user }) => {
+            if(!user) throw unauthorizedError('User unauthorized');
+            console.log(user)
+            return createJob({companyId: user.companyId, title, description});
         },
         deleteJob: (_root, { id }) => deleteJob(id),
         updateJob: (_root, { input: {title, description} }) => {
@@ -54,5 +53,11 @@ export const resolvers = {
 function notFoundError(message) {
     return new GraphQLError(message, {
         extensions: { code: 'NOT_FOUND' }
+    });
+}
+
+function unauthorizedError(message) {
+    return new GraphQLError(message, {
+        extensions: { code: 'UNAUTHORIZED' }
     });
 }
